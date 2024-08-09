@@ -25,7 +25,7 @@ body, html {
 #display {
     text-align: end;
     flex-grow: 1;
-    background-color: silver
+    background-color: lavender;
     
 }
  .buttons-container {
@@ -48,6 +48,7 @@ body, html {
     color: #ffff;
     background-color: midnightblue;
     font-size: 30px;
+    border-radius: 8px;
  }
 
 
