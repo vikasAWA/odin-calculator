@@ -1,6 +1,55 @@
 * {
-    background-color: black;
-    color: bisque;
-    font-size: 200px;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    height: 500px;
+    width: 300px;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    border: 20px solid black;
+    border-radius: 20px;
+ 
+}
+
+#display {
+    text-align: end;
+    flex-grow: 1;
+    background-color: silver
+    
+}
+ .buttons-container {
+    background-color: darkslateblue;
+    flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .row {
+    flex-grow: 1;
+    display: flex;
+
+ }
+
+ .row > button {
+    flex-grow: 1;
+    flex-basis: 10px;
+    margin: 1px;
+    color: #ffff;
+    background-color: midnightblue;
+    font-size: 30px;
+ }
+
+
+
+
