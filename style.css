@@ -56,6 +56,14 @@ body, html {
     border-radius: 8px;
  }
 
+ .row .operations {
+    background-color: indigo;
+ }
+
+ .row .features {
+    background-color: navy;
+ }
+
 
 
 
