@@ -14,6 +14,8 @@ function divide(x, y) {
     return x / y;
 }
 
+let firstNumber, secondNumber, ops;
+
 function operate(operation, x, y) {
     switch(operation) {
         case "+":
@@ -22,11 +24,22 @@ function operate(operation, x, y) {
         case "-":
             return subtract(x, y);
 
-        case "X":
+        case "*":
             return multiply(x, y);
 
         case "/":
             return divide(x, y);
     }
 }
+
+const display = document.querySelector("#display");
+
+const buttons = document.querySelectorAll('button');
+
+function del(str) {
+    return str.slice(0, str.length-1)
+}
+
+
+
 
