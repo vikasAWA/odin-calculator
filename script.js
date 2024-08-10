@@ -40,6 +40,11 @@ function del(str) {
     return str.slice(0, str.length-1)
 }
 
+function clear() {
+    if (e.target.textContent === 'AC') {
+        display.textContent = '';
+    }
+}
 
 
 
