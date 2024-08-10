@@ -36,15 +36,10 @@ const display = document.querySelector("#display");
 
 const buttons = document.querySelectorAll('button');
 
-function del(str) {
-    return str.slice(0, str.length-1)
-}
 
-function clear() {
-    if (e.target.textContent === 'AC') {
-        display.textContent = '';
-    }
-}
-
-
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        display.textContent = e.target.textContent;
+    })
+})
 
