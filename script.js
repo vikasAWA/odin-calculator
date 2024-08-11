@@ -45,6 +45,13 @@ let ops = '';
 //Declaring a variable to hold display value.
 let displayValue;
 
+//Clear feature
+function clear(event) {
+    if (event.target.textContent === 'AC') {
+        display.textContent = "0";
+    }
+}
+
 buttons.forEach((button) => {
     button.addEventListener("click", (e)=> {
         // populate the screen when clicked number is printed ont he screen 
@@ -75,6 +82,7 @@ buttons.forEach((button) => {
             //displayed the solution into the display screen.
             display.textContent = solution;
         }
+        clear(e);
 
     })
 })
