@@ -52,6 +52,13 @@ function clear(event) {
     }
 }
 
+// delete feature
+function del(event) {
+    if (event.target.textContent === "DEL") {
+        display.textContent = display.textContent.slice(0, display.textContent.length -4);
+    }
+}
+
 buttons.forEach((button) => {
     button.addEventListener("click", (e)=> {
         // populate the screen when clicked number is printed ont he screen 
@@ -83,6 +90,7 @@ buttons.forEach((button) => {
             display.textContent = solution;
         }
         clear(e);
+        del(e);
 
     })
 })
