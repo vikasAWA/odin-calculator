@@ -59,41 +59,48 @@ function del(event) {
     }
 }
 
+let eventCount = 0;
+
 buttons.forEach((button) => {
-    button.addEventListener("click", (e)=> {
-        // populate the screen when clicked number is printed ont he screen 
-        if (display.textContent === "0") {
+    button.addEventListener("click", (e) => {
+        eventCount += 1;
+        if (eventCount === 1 && !isNaN(e.target.textContent) ) {
             display.textContent = e.target.textContent;
         }
+        else if (e.target.textContent === ".") {
+            display.textContent = "0."
+        }
+        
         else {
             display.textContent += e.target.textContent;
+            if (["+", "-", "/", "*"].includes(e.target.textContent)) {
+                ops = e.target.textContent;
+                ["+", "-", "/", "*"].forEach((item) => {
+                    if (e.target.textContent === item) {
+                        e.target.disabled = true;
+                    }
+                } )
+                
+            }
+            if (e.target.textContent === "=") {
+                displayValue = display.textContent.slice(0, display.textContent.length-1);
+                let displayArray = displayValue.split(ops);
+                firstNumber = displayArray[0];
+                secondNumber = displayArray[1];
+                let solution = operate(ops, +firstNumber, +secondNumber);
+                display.textContent = solution;
+            }
+            
         }
-        //when operation is clicked , save the number before it in firstNumber
-        if (["+", "-", "*", "/"].includes(e.target.textContent)) {
-            displayValue = display.textContent;
-            firstNumber = displayValue.slice(0, displayValue.length-1);
-            ops = e.target.textContent;
-
-        }
-        //As "=" is clicked
-        if (e.target.textContent === "=") {
-            displayValue = display.textContent;
-            displayValue = displayValue.slice(0, displayValue.length-1);
-            // Splitted the display string on operation
-            //saved the operation in ops variable
-            let displayArray = displayValue.split(ops);
-            //Saved the last element (second number) of the array in secondNumber variable.
-            secondNumber = displayArray[displayArray.length-1];
-            // Calculate the solution using operate()
-            let solution = operate(ops, +firstNumber, +secondNumber);
-            //displayed the solution into the display screen.
-            display.textContent = solution;
-        }
-        clear(e);
-        del(e);
 
     })
 })
+
+//weird behaviors 
+//1. After the solution display the clicked number keep concating with soluion.
+//2. After solution if "=" is clicked it keep adding solution with firstNumber
+//3. Even in starting operations can be displayed in screen.
+//4.if 0, it does not take operations 
 
 
 
