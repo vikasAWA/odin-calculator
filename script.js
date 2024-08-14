@@ -37,41 +37,40 @@ buttons.forEach(button => {
         }
         else if (["+", "-", "/", "*", "="].includes(buttonText)) {
             opCount++;
+            // This line stores the first operator except "=". And add it in display.
             if (buttonText !== "=" && opCount === 1) {
                 operator = buttonText;
+                display.textContent += buttonText;
             }
-            display.textContent += buttonText;
+
+            
+            
             let regex = /\d{1,10}(\+|-|\*|\/)\d{1,10}/g;
             if (display.textContent.match(regex) && buttonText === "=") {
                 let displayValue = display.textContent;
-                displayValue = displayValue.slice(0, displayValue.length-1);
                 let displayStringArray = displayValue.split(operator);
                 firstNumber = parseFloat(displayStringArray[0]);
                 secondNumber = parseFloat(displayStringArray[1]);
 
                 let solution = operate(operator, firstNumber, secondNumber).toFixed(4);
                 display.textContent = solution;
-
-                // if (solution) {
-                //     solutionFlag = true;
-                //     firstNumber = solution;
-                //     operator = null;
-                // }
+                solutionFlag = true;
+                firstNumber = solution;
+                opCount = 0;
 
             }
             
-            if (opCount >= 2 && secondNumber === '' || buttonText === "=" && secondNumber === '') {
-                display.textContent = display.textContent.slice(0, display.textContent.length-1);
-                opCount = 0;
-            }
+            // if (opCount >= 2 && solutionFlag) {
+            //     display.textContent + display.textContent.slice(0, display.textContent.length-1);
+            //     opCount = 0;
+            // }
             
         }
 
+
         else {
-            if (solutionFlag === false) {
-                let displayText = display.textContent === '0' ? buttonText : display.textContent + buttonText;
-                display.textContent = displayText;
-            }
+            let displayText = display.textContent === '0' ? buttonText : display.textContent + buttonText;
+            display.textContent = displayText;
 
         }
         
