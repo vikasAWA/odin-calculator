@@ -85,13 +85,16 @@ buttons.forEach(button => {
             }
             
         }
-
-
+        //Delete feature (backspace)
+        else if (buttonText === "DEL") {
+            display.textContent = display.textContent.slice(0, display.textContent.length-1);
+        }
 
         else {
             //Resetting the display to first number after solution, if a number is clicked.
             if (solutionFlag === true) {
                 display.textContent = buttonText;
+                solutionFlag = false;
             }
             else {
                 //If display is "0" at start then put "clicked" number else concate.
