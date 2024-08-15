@@ -53,7 +53,7 @@ buttons.forEach(button => {
             }
 
             // The pattern that matches and "=" is clicked, will call operate.
-            let regex = /\d{1,10}(\+|-|\*|\/)\d{1,10}/g;
+            let regex = /\d{1,10}\.?(\+|-|\*|\/)\d{1,10}/g;
             if (display.textContent.match(regex) && buttonText === "=") {
                 let displayValue = display.textContent;
 
