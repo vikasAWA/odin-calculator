@@ -29,8 +29,9 @@ body, html {
     flex-basis: 40px;
     flex-grow: 1;
     background-color: lavender;
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 300;
+    font-family: sans-serif;
     
 }
  .buttons-container {
