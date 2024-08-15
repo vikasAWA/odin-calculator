@@ -9,8 +9,7 @@ function operate(opt, x, y) {
             return x * y;
         case "/":
             return x / y;
-        default:
-            return y;
+    
     }
 }
 
@@ -47,6 +46,8 @@ buttons.forEach(button => {
             if (buttonText !== "=" && opCount === 1) {
                 operator = buttonText;
                 display.textContent += buttonText;
+                //When operator isd clicked flag is reset to false
+                solutionFlag = false;
             }
 
             // The pattern that matches and "=" is clicked, will call operate.
@@ -61,12 +62,17 @@ buttons.forEach(button => {
                 firstNumber = parseFloat(displayStringArray[0]);
                 secondNumber = parseFloat(displayStringArray[1]);
 
+                
                 //Calling operate to get the solution and rounding it to 2 decimals
                 let solution = operate(operator, firstNumber, secondNumber).toFixed(2);
                 display.textContent = solution;
                 solutionFlag = true;
 
-                //setting things for next calculation.
+                if (display.textContent === Infinity) {
+                    display.textContent === "ERROR";
+                }
+
+                //Setting things for next calculation.
                 firstNumber = solution;
                 secondNumber = '';
                 opCount = 0;
@@ -78,17 +84,20 @@ buttons.forEach(button => {
                 opCount = 0;
             }
             
-            // if (opCount >= 2 && solutionFlag) {
-            //     display.textContent + display.textContent.slice(0, display.textContent.length-1);
-            //     opCount = 0;
-            // }  
         }
 
 
 
         else {
-            let displayText = display.textContent === '0' ? buttonText : display.textContent + buttonText;
-            display.textContent = displayText;
+            //Resetting the display to first number after solution, if a number is clicked.
+            if (solutionFlag === true) {
+                display.textContent = buttonText;
+            }
+            else {
+                //If display is "0" at start then put "clicked" number else concate.
+                let displayText = display.textContent === '0' ? buttonText : display.textContent + buttonText;
+                display.textContent = displayText;
+            }  
 
         }
         
