@@ -19,6 +19,7 @@ let secondNumber = '';
 let operator = null;
 let opCount = 0;
 let solutionFlag = false;
+let dotCount = 0;
 
 //Selecting display by Id and all buttons by button element
 const display = document.querySelector('#display');
@@ -37,6 +38,7 @@ buttons.forEach(button => {
             secondNumber = "";
             operator = null;
             opCount = 0;
+            dotCount = 0;
         }
 
         //when operators are clicked.
@@ -68,9 +70,6 @@ buttons.forEach(button => {
                 display.textContent = solution;
                 solutionFlag = true;
 
-                if (display.textContent === Infinity) {
-                    display.textContent === "ERROR";
-                }
 
                 //Setting things for next calculation.
                 firstNumber = solution;
@@ -87,8 +86,15 @@ buttons.forEach(button => {
         }
         //Delete feature (backspace)
         else if (buttonText === "DEL") {
-            display.textContent = display.textContent.slice(0, display.textContent.length-1);
+            //If length of display content is more than 1 than DEL not work.
+            if (display.textContent.length > 1) {
+                display.textContent = display.textContent.slice(0, display.textContent.length-1);
+            }
+           
         }
+
+        //Handling dot , so can not put to dots on a single number
+        
 
         else {
             //Resetting the display to first number after solution, if a number is clicked.
