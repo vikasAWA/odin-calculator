@@ -19,7 +19,7 @@ let secondNumber = '';
 let operator = null;
 let opCount = 0;
 let solutionFlag = false;
-let dotCount = 0;
+
 
 //Selecting display by Id and all buttons by button element
 const display = document.querySelector('#display');
@@ -38,7 +38,6 @@ buttons.forEach(button => {
             secondNumber = "";
             operator = null;
             opCount = 0;
-            dotCount = 0;
         }
 
         //when operators are clicked.
@@ -94,6 +93,11 @@ buttons.forEach(button => {
         }
 
         //Handling dot , so can not put to dots on a single number
+        else if (buttonText === ".") {
+            if (!(display.textContent.includes('.')) && opCount === 0) {
+                display.textContent += buttonText;
+            }
+        }
         
 
         else {
