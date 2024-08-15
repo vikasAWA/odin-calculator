@@ -61,13 +61,21 @@ buttons.forEach(button => {
                 firstNumber = parseFloat(displayStringArray[0]);
                 secondNumber = parseFloat(displayStringArray[1]);
 
-                //Calling operate to get the solution
-                let solution = operate(operator, firstNumber, secondNumber).toFixed(4);
+                //Calling operate to get the solution and rounding it to 2 decimals
+                let solution = operate(operator, firstNumber, secondNumber).toFixed(2);
                 display.textContent = solution;
                 solutionFlag = true;
+
+                //setting things for next calculation.
                 firstNumber = solution;
+                secondNumber = '';
                 opCount = 0;
 
+            }
+
+            //Resetting opCount to 0, if "=" is clicked after solution and secondNumber is not typed to match the pattern.
+            if (buttonText === "=" && secondNumber === '') {
+                opCount = 0;
             }
             
             // if (opCount >= 2 && solutionFlag) {
